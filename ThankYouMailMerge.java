@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class ThankYouMailMerge {
 
-    public static void createThankYou(String name, String amount) {
+    public static void createThankYou(String name, float amount) {
         out.println("\nDear " + name + ",");
         out.println("\nThank you for your donation! We rely on donor like you to keep our ");
         out.println("organization effective, and you cam through for us.  Your donation of $ " + amount);
@@ -33,9 +33,9 @@ public class ThankYouMailMerge {
                 newDonor = false;
             } else {
                 out.print("Please enter donation amount for " + name + " : ");
-                String amount = keyboard.nextLine();
-                //out.println("");
-                
+                float amount = keyboard.nextFloat();
+                keyboard.nextLine();
+                                
                 createThankYou(name, amount);
 
             }
