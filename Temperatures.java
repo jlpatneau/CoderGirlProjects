@@ -1,4 +1,5 @@
 
+
 public class Temperatures {
  
     public static void main (String[] args) {
@@ -11,7 +12,13 @@ public class Temperatures {
         float avgPerTime[] = new float [4];
 
         System.out.println("Temperature Chart");
+        System.out.print("         ");
+        for (int index=0; index<days.length; index++) {
+            System.out.print(days[index] + " ");
+        }
+        System.out.print("\n");
         for (int timeIndex=0; timeIndex<times.length; timeIndex++) {
+            System.out.print(times[timeIndex] + "   ");
             for (int dayIndex=0; dayIndex<days.length; dayIndex++) {
                 System.out.print(tempGrid[timeIndex][dayIndex] + "  ");
             }
