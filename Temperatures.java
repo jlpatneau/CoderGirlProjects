@@ -8,8 +8,10 @@ public class Temperatures {
         String times[] = {"7:00 AM", "3:00 PM", "7:00 PM", "3:00 AM"};
         
         float overallTotal = 0;
-        float avgDay = 0f;
-        float avgTime = 0f;
+        float avgPerDay[] = new float [7];
+        float avgPerTime[] = new float [4];
+        //float avgDay = 0f;
+        //float avgTime = 0f;
 
         System.out.println("Temperature Chart");
         System.out.print("         ");
@@ -32,8 +34,10 @@ public class Temperatures {
             for (int timeIndex=0; timeIndex<times.length; timeIndex++) {
                 dayTotal= dayTotal + tempGrid[timeIndex][dayIndex];
             }
-            avgDay = dayTotal / times.length;
+            avgPerDay[dayIndex] = dayTotal / times.length;
             System.out.println(days[dayIndex] + ": " + avgDay);
+            //avgDay = dayTotal / times.length;
+            //System.out.println(days[dayIndex] + ": " + avgDay);
         }
         
         //average temp for each time
@@ -45,9 +49,12 @@ public class Temperatures {
                 //System.out.print(timeTotal + " ");
             }
             //System.out.print("\n");
-            avgTime = timeTotal / days.length;
-            System.out.println(times[timeIndex] + ": " + avgTime);
-            overallTotal = avgTime + overallTotal;
+            avgPerTime[timeIndex] = timeTotal / days.length;
+            System.out.println(times[timeIndex] + ": " + avgPerTime[timeIndex]);
+            overallTotal = avgPerTime[timeIndex] + overallTotal;
+            //avgTime = timeTotal / days.length;
+            //System.out.println(times[timeIndex] + ": " + avgTime);
+            //overallTotal = avgTime + overallTotal;
         }
                 
         //overall average temp
