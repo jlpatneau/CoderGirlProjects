@@ -188,6 +188,7 @@ public class TicTacToe {
         char gameBoard[][] = new char[3][3];
         Scanner keyboard = new Scanner(System.in);
         boolean xTurn = true;
+        boolean xFirst = true;
         boolean gameOver = false;
         boolean keepPlaying = true;
         int count = 0;
@@ -217,7 +218,7 @@ public class TicTacToe {
                 keyboard.nextLine();
 
                 //check for valid position or if spot already occupied
-                if (playLocation < 10) {
+                if (playLocation < 10 && playLocation > 0) {
                     boolean validPlay = assignSpot(gameBoard, xTurn, playLocation);
                     if (validPlay) {
                         count++; //number of valid game plays
@@ -250,7 +251,7 @@ public class TicTacToe {
             } while (!gameOver && count<9);
 
             if (!gameOver && count == 9) {
-                System.out.println("Game over - it's a tie");
+                System.out.println("It's a tie.  Game over.");
                 tieCount++;
                 gameOver = true;
             }
@@ -267,10 +268,16 @@ public class TicTacToe {
                         validChoice = true;
                         count = 0;
                         gameOver = false;
-                        if (xTurn) {
-                            System.out.println("X will go first this game.");
-                        } else {
+                        if (xFirst) { 
+                            //x went first in the previous game, O goes first now
+                            xTurn = false;
+                            xFirst = false;
                             System.out.println("O will go first this game.");
+                        } else { 
+                            //O went first in the previous game, X goes first now
+                            xTurn = true;
+                            xFirst = true;
+                            System.out.println("X will go first this game.");
                         }
 
                     } else if (playAgain.equalsIgnoreCase("N")) {
